@@ -5,6 +5,7 @@ import it.gabrieletondi.telldontaskkata.useCase.RejectedOrderCannotBeApprovedExc
 import it.gabrieletondi.telldontaskkata.useCase.ShippedOrdersCannotBeChangedException;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
@@ -16,7 +17,12 @@ public class Order {
     private int id;
 
     public Order(OrderStatus status) {
-        this.status = status;
+        setStatus(status);
+
+        setItems(new ArrayList<>());
+        setCurrency("EUR");
+        setTotal(new BigDecimal("0.00"));
+        setTax(new BigDecimal("0.00"));
     }
 
     public BigDecimal getTotal() {
