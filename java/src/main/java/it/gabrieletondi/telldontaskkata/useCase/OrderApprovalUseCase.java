@@ -13,10 +13,6 @@ public class OrderApprovalUseCase {
     public void run(OrderApprovalRequest request) {
         final Order order = orderRepository.getById(request.getOrderId());
 
-        if (order.isShippedAlready()) {
-            throw new ShippedOrdersCannotBeChangedException();
-        }
-
         if (request.isApproved()) order.markAsApproved();
         else order.markAsRejected();
 
