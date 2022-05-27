@@ -70,4 +70,12 @@ public class Order {
     public boolean isShippedAlready() {
         return status.equals(OrderStatus.SHIPPED);
     }
+
+    public boolean isRejected() {
+        return getStatus().equals(OrderStatus.REJECTED);
+    }
+
+    public boolean isApproved() {
+        return getStatus().equals(OrderStatus.APPROVED);
+    }
 }
