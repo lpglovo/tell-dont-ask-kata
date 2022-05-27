@@ -17,10 +17,6 @@ public class OrderApprovalUseCase {
             throw new ShippedOrdersCannotBeChangedException();
         }
 
-        if (request.isApproved() && order.isRejected()) {
-            throw new RejectedOrderCannotBeApprovedException();
-        }
-
         if (!request.isApproved() && order.isApproved()) {
             throw new ApprovedOrderCannotBeRejectedException();
         }
