@@ -66,4 +66,8 @@ public class Order {
     public void markAsRejected() {
         setStatus(OrderStatus.REJECTED);
     }
+
+    public boolean isShippedAlready() {
+        return status.equals(OrderStatus.SHIPPED);
+    }
 }
