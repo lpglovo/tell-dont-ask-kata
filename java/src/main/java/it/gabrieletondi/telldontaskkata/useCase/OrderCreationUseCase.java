@@ -23,8 +23,7 @@ public class OrderCreationUseCase {
     }
 
     public void run(SellItemsRequest request) {
-        Order order = new Order();
-        order.setStatus(OrderStatus.CREATED);
+        Order order = new Order(OrderStatus.CREATED);
         order.setItems(new ArrayList<>());
         order.setCurrency("EUR");
         order.setTotal(new BigDecimal("0.00"));

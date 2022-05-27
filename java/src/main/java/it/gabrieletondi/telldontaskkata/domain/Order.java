@@ -15,6 +15,10 @@ public class Order {
     private OrderStatus status;
     private int id;
 
+    public Order(OrderStatus status) {
+        this.status = status;
+    }
+
     public BigDecimal getTotal() {
         return total;
     }
@@ -51,7 +55,7 @@ public class Order {
         return status;
     }
 
-    public void setStatus(OrderStatus status) {
+    private void setStatus(OrderStatus status) {
         if (this.status != null && isShippedAlready())
             throw new ShippedOrdersCannotBeChangedException();
 
@@ -89,5 +93,9 @@ public class Order {
 
     public boolean isApproved() {
         return getStatus().equals(OrderStatus.APPROVED);
+    }
+
+    public void markAsShip() {
+        setStatus(OrderStatus.SHIPPED);
     }
 }

@@ -17,9 +17,8 @@ public class OrderShipmentUseCaseTest {
 
     @Test
     public void shipApprovedOrder() throws Exception {
-        Order initialOrder = new Order();
+        Order initialOrder = new Order(OrderStatus.APPROVED);
         initialOrder.setId(1);
-        initialOrder.setStatus(OrderStatus.APPROVED);
         orderRepository.addOrder(initialOrder);
 
         OrderShipmentRequest request = new OrderShipmentRequest();
@@ -33,9 +32,8 @@ public class OrderShipmentUseCaseTest {
 
     @Test
     public void createdOrdersCannotBeShipped() throws Exception {
-        Order initialOrder = new Order();
+        Order initialOrder = new Order(OrderStatus.CREATED);
         initialOrder.setId(1);
-        initialOrder.setStatus(OrderStatus.CREATED);
         orderRepository.addOrder(initialOrder);
 
         OrderShipmentRequest request = new OrderShipmentRequest();
@@ -49,9 +47,8 @@ public class OrderShipmentUseCaseTest {
 
     @Test
     public void rejectedOrdersCannotBeShipped() throws Exception {
-        Order initialOrder = new Order();
+        Order initialOrder = new Order(OrderStatus.REJECTED);
         initialOrder.setId(1);
-        initialOrder.setStatus(OrderStatus.REJECTED);
         orderRepository.addOrder(initialOrder);
 
         OrderShipmentRequest request = new OrderShipmentRequest();
@@ -64,9 +61,8 @@ public class OrderShipmentUseCaseTest {
 
     @Test
     public void shippedOrdersCannotBeShippedAgain() throws Exception {
-        Order initialOrder = new Order();
+        Order initialOrder = new Order(OrderStatus.SHIPPED);
         initialOrder.setId(1);
-        initialOrder.setStatus(OrderStatus.SHIPPED);
         orderRepository.addOrder(initialOrder);
 
         OrderShipmentRequest request = new OrderShipmentRequest();
